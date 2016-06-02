@@ -1,0 +1,24 @@
+<h1>Welcome, <%=@user.username%></h1>
+
+<h3>Here are your produce items:</h3>
+
+<table >
+  <tr>
+    <th>Item</th>
+    <th>Quantity</th>
+    <th>Expires on</th>
+    <th>Remove from list </th>
+  </tr>
+  <%@user.produce.each do |produce| %>
+  <tr>
+    <td><%= produce.name %></td>
+    <td><%=produce.date_purchased%></td>
+    <td>date    </td>
+    <td><form action="/produce/<%=produce.id%>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Remove from list">
+
+    </form></td>
+    <%end%>
+  </tr>
+</table>
